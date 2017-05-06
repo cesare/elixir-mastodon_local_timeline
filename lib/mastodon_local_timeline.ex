@@ -37,10 +37,28 @@ defmodule MastodonLocalTimeline do
 
   defp recv(socket) do
     case socket |> Socket.Web.recv! do
-      {:text, json} -> json |> IO.puts
+      {:text, json} -> json |> handle_json
       {:ping, message} -> socket |> Socket.Web.send!({:pong, message})
     end
 
     recv(socket)
+  end
+
+  defp handle_json(json) do
+    case JSON.decode(json) do
+      {:ok, decoded} -> handle_update_event(decoded)
+      _ -> IO.puts "******** failed to decode JSON ********"
+    end
+  end
+
+  defp handle_update_event(%{"event" => "update", "payload" => payload}) do
+    case JSON.decode(payload) do
+      {:ok, message} -> IO.inspect message
+      _ -> IO.puts "******** failed to decode payload ********"
+    end
+  end
+
+  defp handle_update_event(_) do
+    # just ignore
   end
 end
