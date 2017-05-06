@@ -53,12 +53,26 @@ defmodule MastodonLocalTimeline do
 
   defp handle_update_event(%{"event" => "update", "payload" => payload}) do
     case JSON.decode(payload) do
-      {:ok, message} -> IO.inspect message
+      {:ok, message} -> message |> format_message |> IO.puts
       _ -> IO.puts "******** failed to decode payload ********"
     end
   end
 
   defp handle_update_event(_) do
     # just ignore
+  end
+
+  defp format_message(message) do
+    account = account_info(message)
+    content = content_text(message)
+    "#{account}: #{content}"
+  end
+
+  defp account_info(%{"account" => %{"display_name" => display_name, "username" => username}}) do
+    "#{display_name} [#{username}]"
+  end
+
+  defp content_text(%{"content" => content}) do
+    content
   end
 end
