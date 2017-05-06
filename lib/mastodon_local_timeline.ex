@@ -73,6 +73,6 @@ defmodule MastodonLocalTimeline do
   end
 
   defp content_text(%{"content" => content}) do
-    content
+    content |> Floki.text
   end
 end
