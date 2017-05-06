@@ -29,6 +29,7 @@ defmodule MastodonLocalTimeline.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
+      {:floki, "~> 0.17.0"},
       {:json, "~> 1.0"},
       {:socket, "~> 0.3"},
     ]

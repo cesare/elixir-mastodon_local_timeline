@@ -1,3 +1,5 @@
 %{"earmark": {:hex, :earmark, "1.2.1", "7ad3f203ab84d31832814483c834e006cf88949f061a4b50d7e783147572280f", [:mix], []},
+  "floki": {:hex, :floki, "0.17.0", "ee23700dac178f601ae8cd05f8d8890a3dfd131fba8972dd3676bcedcb14a18d", [:mix], [{:mochiweb, "~> 2.15", [hex: :mochiweb, optional: false]}]},
   "json": {:hex, :json, "1.0.0", "4824dadb01e14395f65e9d18da294d534326d7eed77996f3c22f74a9870179eb", [:mix], [{:earmark, ">= 0.0.0", [hex: :earmark, optional: false]}]},
+  "mochiweb": {:hex, :mochiweb, "2.15.0", "e1daac474df07651e5d17cc1e642c4069c7850dc4508d3db7263a0651330aacc", [:rebar3], []},
   "socket": {:hex, :socket, "0.3.11", "46004230045c2207c0b90adb9abe3ba15a83e634b341ac37af39a4adf48ed00b", [:mix], []}}
