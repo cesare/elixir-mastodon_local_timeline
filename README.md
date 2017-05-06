@@ -1,19 +1,27 @@
 # MastodonLocalTimeline
 
-**TODO: Add description**
+This is just an experiment to display Mastodon local timeline on the terminal.
 
-## Installation
+# Prerequisites
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mastodon_local_timeline` to your list of dependencies in `mix.exs`:
+* Mastodon account (on any instance)
+* Access token
+
+# How to run
+
+Copy `config/dev.secret.exs.sample` to `config/dev.secret.exs` and fix its contents.
+It would be something like this:
 
 ```elixir
-def deps do
-  [{:mastodon_local_timeline, "~> 0.1.0"}]
-end
+use Mix.Config
+
+config :mastodon_local_timeline,
+  host: "Hostname for your instance",
+  access_token: "your access token"
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/mastodon_local_timeline](https://hexdocs.pm/mastodon_local_timeline).
+Run `iex -S mix` and,
 
+```elixir
+MastodonLocalTimeline.start
+```
